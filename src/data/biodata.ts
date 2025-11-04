@@ -5,13 +5,13 @@ export interface Biodata {
     dateOfBirth: string;
     age: number;
     height: string;
-    weight: string;
+    // weight: string;
     religion: string;
     caste: string;
     education: string;
     occupation: string;
     company: string;
-    income: string;
+    // income: string;
     location: string;
     profileImage: string;
   };
@@ -42,35 +42,35 @@ export interface Biodata {
 
 export const biodata: Biodata = {
   personal: {
-    name: "Priya Sharma",
+    name: "Deepak Das",
     tagline: "Looking forward to a beautiful journey 💖",
-    dateOfBirth: "15 March 1995",
-    age: 29,
-    height: "5'4\"",
-    weight: "55 kg",
+    dateOfBirth: "17 May 2000",
+    age: 25,
+    height: "5'7\"",
+    // weight: "55 kg",
     religion: "Hindu",
-    caste: "Brahmin",
-    education: "MBA in Marketing",
-    occupation: "Marketing Manager",
-    company: "Tech Innovations Pvt. Ltd.",
-    income: "₹12-15 LPA",
-    location: "Mumbai, Maharashtra",
+    caste: "Ravidasia",
+    education: "Btech in Mechanical Engineering from NIT Warangal",
+    occupation: "Software Developer",
+    company: "Fenice energy Pvt. Ltd.",
+    // income: "₹12-15 LPA",
+    location: "Chennai, Tamilnadu, India",
     profileImage: "https://img.freepik.com/free-photo/portrait-beautiful-young-woman-standing-grey-wall_231208-10760.jpg"
   },
   family: {
     father: {
-      name: "Rajesh Sharma",
-      occupation: "Senior Bank Manager (Retired)"
+      name: "Shri Chanderdeo Ravidas",
+      occupation: "Govt. Employee in KMC (Working)"
     },
     mother: {
-      name: "Sunita Sharma",
+      name: "Rinki Devi",
       occupation: "Homemaker"
     },
-    siblings: "One younger brother, Software Engineer in Bangalore",
+    siblings: "One younger brother, Studying in 11th grade",
     background: "We are a close-knit, educated family with traditional values and modern outlook. Our family believes in mutual respect, love, and supporting each other's dreams. We celebrate all festivals together and maintain strong family bonds."
   },
   personalInfo: {
-    hobbies: ["Reading novels", "Yoga & Meditation", "Cooking Indian cuisine", "Traveling", "Photography", "Classical dancing"],
+    hobbies: ["Reading novels", "Yoga & Meditation", "Cooking Indian cuisine", "Traveling", "Photography", "Listening music"],
     personality: "I'm an optimistic, caring, and ambitious person who believes in maintaining a perfect work-life balance. I value honesty, integrity, and kindness. I love spending time with family and friends, and I'm passionate about personal growth and helping others.",
     partnerPreferences: "Looking for a well-educated, understanding, and caring life partner who values family and relationships. Someone who is ambitious yet grounded, with a good sense of humor and respect for traditions. Preferably from a similar cultural background, aged 28-34, with a stable career."
   },
@@ -82,8 +82,8 @@ export const biodata: Biodata = {
     "https://img.freepik.com/free-photo/positive-human-reactions-emotions-charming-young-female-with-fair-hair-broad-smile_176420-15184.jpg"
   ],
   contact: {
-    email: "priya.sharma@email.com",
-    phone: "+91 98765 43210",
-    whatsapp: "+91 98765 43210"
+    email: "deepakdasashutosh825318@gmail.com",
+    phone: "+91 91287 53899",
+    whatsapp: "+91 91287 53899"
   }
 };
