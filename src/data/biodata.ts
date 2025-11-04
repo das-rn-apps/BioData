@@ -5,13 +5,11 @@ export interface Biodata {
     dateOfBirth: string;
     age: number;
     height: string;
-    // weight: string;
     religion: string;
     caste: string;
     education: string;
     occupation: string;
     company: string;
-    // income: string;
     location: string;
     profileImage: string;
   };
@@ -47,13 +45,11 @@ export const biodata: Biodata = {
     dateOfBirth: "17 May 2000",
     age: 25,
     height: "5'7\"",
-    // weight: "55 kg",
     religion: "Hindu",
     caste: "Ravidasia",
     education: "Btech in Mechanical Engineering from NIT Warangal",
     occupation: "Software Developer",
     company: "Fenice energy Pvt. Ltd.",
-    // income: "₹12-15 LPA",
     location: "Chennai, Tamilnadu, India",
     profileImage: "https://img.freepik.com/free-photo/portrait-beautiful-young-woman-standing-grey-wall_231208-10760.jpg"
   },

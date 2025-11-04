@@ -1,18 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Ruler, Weight, MapPin, GraduationCap, Briefcase, DollarSign, Users } from 'lucide-react';
+import { Calendar, Ruler, MapPin, GraduationCap, Briefcase, Users } from 'lucide-react';
 import { biodata } from '../data/biodata';
 
 const BasicInfo: React.FC = () => {
   const infoItems = [
     { icon: Calendar, label: 'Date of Birth', value: biodata.personal.dateOfBirth },
     { icon: Ruler, label: 'Height', value: biodata.personal.height },
-    { icon: Weight, label: 'Weight', value: biodata.personal.weight },
     { icon: Users, label: 'Religion', value: biodata.personal.religion },
     { icon: MapPin, label: 'Caste', value: biodata.personal.caste },
     { icon: GraduationCap, label: 'Education', value: biodata.personal.education },
     { icon: Briefcase, label: 'Occupation', value: biodata.personal.occupation },
-    { icon: DollarSign, label: 'Income', value: biodata.personal.income },
     { icon: MapPin, label: 'Location', value: biodata.personal.location },
     { icon: Briefcase, label: 'Company', value: biodata.personal.company },
   ];
@@ -68,8 +66,8 @@ const BasicInfo: React.FC = () => {
         >
           <h3 className="text-2xl font-bold text-text mb-4">Quick Summary</h3>
           <p className="text-lg text-gray-600 leading-relaxed">
-            I'm a {biodata.personal.age}-year-old {biodata.personal.education} graduate working as a {biodata.personal.occupation.toLowerCase()} 
-            in {biodata.personal.location}. I come from a {biodata.personal.religion.toLowerCase()} {biodata.personal.caste.toLowerCase()} background 
+            I'm a {biodata.personal.age}-year-old {biodata.personal.education} graduate working as a {biodata.personal.occupation.toLowerCase()}
+            in {biodata.personal.location}. I come from a {biodata.personal.religion.toLowerCase()} {biodata.personal.caste.toLowerCase()} background
             and believe in balancing traditional values with modern thinking.
           </p>
         </motion.div>
