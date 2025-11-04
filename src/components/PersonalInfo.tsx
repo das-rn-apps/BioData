@@ -53,10 +53,10 @@ const PersonalInfo: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { emoji: "📚", title: "Reading", desc: "Fiction & Self-help" },
-                { emoji: "🧘", title: "Wellness", desc: "Yoga & Meditation" },
-                { emoji: "🍳", title: "Cooking", desc: "Indian Cuisine" },
-                { emoji: "📸", title: "Photography", desc: "Nature & Portraits" }
+                { emoji: "📚", title: "Reading & Teaching", desc: "Fiction & Self-help" },
+                { emoji: "🎶", title: "Music", desc: "Indian Music" },
+                { emoji: "📸", title: "Photography", desc: "Nature & Portraits" },
+                { emoji: "🧘", title: "Wellness", desc: "Exrecise" },
               ].map((interest, index) => (
                 <div key={index} className="glass-effect rounded-lg p-4 text-center">
                   <div className="text-2xl mb-2">{interest.emoji}</div>
@@ -146,7 +146,7 @@ const PersonalInfo: React.FC = () => {
               </h4>
               <div className="space-y-2">
                 {[
-                  "Age: 28-34 years",
+                  "Age: 20-24 years",
                   "Similar cultural background",
                   "Stable career",
                   "Family-oriented",

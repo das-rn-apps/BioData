@@ -9,7 +9,7 @@ const ContactSection: React.FC = () => {
 
   const handleShare = async () => {
     const url = window.location.href;
-    
+
     if (navigator.share) {
       try {
         await navigator.share({
@@ -29,50 +29,141 @@ const ContactSection: React.FC = () => {
   };
 
   const handleDownloadPDF = () => {
-    // Create a simple PDF generation function
+    const brotherList =
+      biodata.family.siblings.brothers && biodata.family.siblings.brothers.length > 0
+        ? biodata.family.siblings.brothers
+          .map(
+            (b) =>
+              `<li>${b.name}${b.age ? ` (${b.age} yrs)` : ""}${b.occupation ? ` - ${b.occupation}` : ""
+              }${b.status ? `, ${b.status}` : ""}</li>`
+          )
+          .join("")
+        : "<li>No brothers listed</li>";
+
+    const sisterList =
+      biodata.family.siblings.sisters && biodata.family.siblings.sisters.length > 0
+        ? biodata.family.siblings.sisters
+          .map(
+            (s) =>
+              `<li>${s.name}${s.age ? ` (${s.age} yrs)` : ""}${s.occupation ? ` - ${s.occupation}` : ""
+              }${s.status ? `, ${s.status}` : ""}</li>`
+          )
+          .join("")
+        : "<li>No sisters listed</li>";
+
+    const hobbyList = biodata.personalInfo.hobbies.map(h => `<li>${h}</li>`).join("");
+
     const printContent = `
-      <html>
-        <head>
-          <title>${biodata.personal.name} - Marriage Biodata</title>
-          <style>
-            body { font-family: 'Poppins', sans-serif; margin: 40px; color: #333; }
-            .header { text-align: center; margin-bottom: 30px; }
-            .section { margin-bottom: 25px; }
-            .section h2 { color: #8b5cf6; border-bottom: 2px solid #8b5cf6; padding-bottom: 5px; }
-            .info-item { margin: 10px 0; }
-            .label { font-weight: 600; color: #666; }
-          </style>
-        </head>
-        <body>
-          <div class="header">
-            <h1>${biodata.personal.name}</h1>
-            <p>${biodata.personal.tagline}</p>
-          </div>
-          
-          <div class="section">
-            <h2>Basic Details</h2>
-            <div class="info-item"><span class="label">Age:</span> ${biodata.personal.age} years</div>
-            <div class="info-item"><span class="label">Height:</span> ${biodata.personal.height}</div>
-            <div class="info-item"><span class="label">Education:</span> ${biodata.personal.education}</div>
-            <div class="info-item"><span class="label">Occupation:</span> ${biodata.personal.occupation}</div>
-            <div class="info-item"><span class="label">Location:</span> ${biodata.personal.location}</div>
-          </div>
-          
-          <div class="section">
-            <h2>Family Details</h2>
-            <div class="info-item"><span class="label">Father:</span> ${biodata.family.father.name} - ${biodata.family.father.occupation}</div>
-            <div class="info-item"><span class="label">Mother:</span> ${biodata.family.mother.name} - ${biodata.family.mother.occupation}</div>
-            <div class="info-item"><span class="label">Siblings:</span> ${biodata.family.siblings}</div>
-          </div>
-          
-          <div class="section">
-            <h2>Contact Information</h2>
-            <div class="info-item"><span class="label">Email:</span> ${biodata.contact.email}</div>
-            <div class="info-item"><span class="label">Phone:</span> ${biodata.contact.phone}</div>
-          </div>
-        </body>
-      </html>
-    `;
+  <html>
+    <head>
+      <title>${biodata.personal.name} - Marriage Biodata</title>
+      <style>
+        body {
+          font-family: 'Poppins', sans-serif;
+          color: #333;
+          margin: 40px;
+          line-height: 1.6;
+        }
+        .header {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+        .profile-img {
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 4px solid #8b5cf6;
+          margin-bottom: 15px;
+        }
+        h1 {
+          margin: 10px 0 5px;
+          color: #4b0082;
+        }
+        h2 {
+          color: #8b5cf6;
+          border-bottom: 2px solid #8b5cf6;
+          padding-bottom: 5px;
+          margin-top: 30px;
+        }
+        .info-item {
+          margin: 6px 0;
+        }
+        .label {
+          font-weight: 600;
+          color: #555;
+        }
+        ul {
+          list-style-type: disc;
+          margin: 6px 0 6px 25px;
+        }
+        .section {
+          margin-bottom: 25px;
+        }
+        .footer {
+          text-align: center;
+          font-size: 13px;
+          color: #777;
+          margin-top: 40px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <img src="${biodata.personal.profileImage}" alt="Profile" class="profile-img" />
+        <h1>${biodata.personal.name}</h1>
+        <p>${biodata.personal.tagline}</p>
+      </div>
+
+      <div class="section">
+        <h2>Personal Details</h2>
+        <div class="info-item"><span class="label">Date of Birth:</span> ${biodata.personal.dateOfBirth}</div>
+        <div class="info-item"><span class="label">Age:</span> ${biodata.personal.age} years</div>
+        <div class="info-item"><span class="label">Height:</span> ${biodata.personal.height}</div>
+        <div class="info-item"><span class="label">Religion:</span> ${biodata.personal.religion}</div>
+        <div class="info-item"><span class="label">Caste:</span> ${biodata.personal.caste}</div>
+        <div class="info-item"><span class="label">Education:</span> ${biodata.personal.education}</div>
+        <div class="info-item"><span class="label">Occupation:</span> ${biodata.personal.occupation} at ${biodata.personal.company}</div>
+        <div class="info-item"><span class="label">Address:</span> ${biodata.personal.address}</div>
+        <div class="info-item"><span class="label">Current Location:</span> ${biodata.personal.location}</div>
+      </div>
+
+      <div class="section">
+        <h2>Family Details</h2>
+        <div class="info-item"><span class="label">Father:</span> ${biodata.family.father.name} - ${biodata.family.father.occupation}</div>
+        <div class="info-item"><span class="label">Mother:</span> ${biodata.family.mother.name} - ${biodata.family.mother.occupation}</div>
+        <div class="info-item"><span class="label">Siblings:</span></div>
+        <ul><strong>Brothers:</strong>${brotherList}</ul>
+        <ul><strong>Sisters:</strong>${sisterList}</ul>
+        <div class="info-item"><span class="label">Family Background:</span> ${biodata.family.background}</div>
+      </div>
+
+      <div class="section">
+        <h2>Personal Interests</h2>
+        <div class="info-item"><span class="label">Hobbies:</span></div>
+        <ul>${hobbyList}</ul>
+        <div class="info-item"><span class="label">Personality:</span> ${biodata.personalInfo.personality}</div>
+      </div>
+
+      <div class="section">
+        <h2>Partner Preferences</h2>
+        <p>${biodata.personalInfo.partnerPreferences}</p>
+      </div>
+
+      <div class="section">
+        <h2>Contact Information</h2>
+        <div class="info-item"><span class="label">Email:</span> ${biodata.contact.email}</div>
+        <div class="info-item"><span class="label">Phone:</span> ${biodata.contact.phone}</div>
+        <div class="info-item"><span class="label">WhatsApp:</span> ${biodata.contact.whatsapp}</div>
+      </div>
+
+      <div class="footer">
+        <p>Generated biodata of ${biodata.personal.name}</p>
+        <p>Thank you for viewing ❤️</p>
+      </div>
+    </body>
+  </html>
+  `;
 
     const printWindow = window.open('', '_blank');
     if (printWindow) {
@@ -83,6 +174,7 @@ const ContactSection: React.FC = () => {
       setTimeout(() => setDownloaded(false), 2000);
     }
   };
+
 
   return (
     <section className="section-padding bg-gradient-to-br from-purple-50 to-pink-50">
@@ -157,7 +249,7 @@ const ContactSection: React.FC = () => {
           className="glass-effect rounded-xl p-8"
         >
           <h3 className="text-2xl font-bold text-text mb-6 text-center">Contact Information</h3>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <motion.a
               href={`mailto:${biodata.contact.email}`}
@@ -205,7 +297,7 @@ const ContactSection: React.FC = () => {
           className="mt-6 text-center"
         >
           <p className="text-gray-600">
-            <span className="font-semibold">Note:</span> Please contact only if you are genuinely interested 
+            <span className="font-semibold">Note:</span> Please contact only if you are genuinely interested
             and looking for a serious relationship. Family involvement is welcome and appreciated.
           </p>
         </motion.div>

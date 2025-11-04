@@ -13,10 +13,10 @@ const Header: React.FC = () => {
             key={i}
             className="absolute text-pink-200 opacity-30"
             initial={{ y: 100, x: Math.random() * 100 + '%' }}
-            animate={{ 
+            animate={{
               y: -100,
               x: Math.random() * 100 + '%',
-              rotate: 360 
+              rotate: 360
             }}
             transition={{
               duration: 15 + Math.random() * 10,
@@ -89,8 +89,8 @@ const Header: React.FC = () => {
             <div className="text-sm text-gray-600">Religion</div>
           </div>
           <div className="glass-effect rounded-lg p-4 card-hover">
-            <div className="text-primary font-semibold">{biodata.personal.location.split(',')[0]}</div>
-            <div className="text-sm text-gray-600">Location</div>
+            <div className="text-primary font-semibold">{biodata.personal.address.split(',')[0]}</div>
+            <div className="text-sm text-gray-600">Address</div>
           </div>
         </motion.div>
 

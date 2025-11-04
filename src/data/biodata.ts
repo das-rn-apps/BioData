@@ -10,6 +10,7 @@ export interface Biodata {
     education: string;
     occupation: string;
     company: string;
+    address: string;
     location: string;
     profileImage: string;
   };
@@ -22,7 +23,10 @@ export interface Biodata {
       name: string;
       occupation: string;
     };
-    siblings: string;
+    siblings: {
+      brothers?: { name: string; age?: number; occupation?: string; status?: string }[];
+      sisters?: { name: string; age?: number; occupation?: string; status?: string }[];
+    };
     background: string;
   };
   personalInfo: {
@@ -37,6 +41,13 @@ export interface Biodata {
     whatsapp: string;
   };
 }
+import profileImage from "../assets/1.png"; // local image
+import profileImage2 from "../assets/2.jpg";
+import profileImage3 from "../assets/3.jpg";
+import profileImage4 from "../assets/4.jpg";
+import profileImage5 from "../assets/5.jpg";
+import profileImage6 from "../assets/6.jpg";
+import profileImage7 from "../assets/7.jpg";
 
 export const biodata: Biodata = {
   personal: {
@@ -46,12 +57,13 @@ export const biodata: Biodata = {
     age: 25,
     height: "5'7\"",
     religion: "Hindu",
-    caste: "Ravidasia",
+    caste: "Ravidas",
     education: "Btech in Mechanical Engineering from NIT Warangal",
-    occupation: "Software Developer",
+    occupation: "Software Developer ",
     company: "Fenice energy Pvt. Ltd.",
+    address: "Barwadih, Markacho, Koderma, Jharkhand, India",
     location: "Chennai, Tamilnadu, India",
-    profileImage: "https://img.freepik.com/free-photo/portrait-beautiful-young-woman-standing-grey-wall_231208-10760.jpg"
+    profileImage
   },
   family: {
     father: {
@@ -62,20 +74,29 @@ export const biodata: Biodata = {
       name: "Rinki Devi",
       occupation: "Homemaker"
     },
-    siblings: "One younger brother, Studying in 11th grade",
+    siblings: {
+      brothers: [
+        { name: "Vishal Kumar Das", age: 17, occupation: "Student (11th Grade)" }
+      ],
+      sisters: [
+        { name: "Manish Kumari", age: 22, occupation: "Graduation" },
+        { name: "Indu Kumari", age: 19, occupation: "4th sem" },
+      ]
+    },
     background: "We are a close-knit, educated family with traditional values and modern outlook. Our family believes in mutual respect, love, and supporting each other's dreams. We celebrate all festivals together and maintain strong family bonds."
   },
   personalInfo: {
-    hobbies: ["Reading novels", "Yoga & Meditation", "Cooking Indian cuisine", "Traveling", "Photography", "Listening music"],
+    hobbies: ["Reading novels", "Teaching","Exercise","Playing volleyball", "Cooking Indian cuisine", "Traveling", "Photography", "Listening music"],
     personality: "I'm an optimistic, caring, and ambitious person who believes in maintaining a perfect work-life balance. I value honesty, integrity, and kindness. I love spending time with family and friends, and I'm passionate about personal growth and helping others.",
-    partnerPreferences: "Looking for a well-educated, understanding, and caring life partner who values family and relationships. Someone who is ambitious yet grounded, with a good sense of humor and respect for traditions. Preferably from a similar cultural background, aged 28-34, with a stable career."
+    partnerPreferences: "Looking for a well-educated, understanding, and caring life partner who values family and relationships. Someone who is ambitious yet grounded, with a good sense of humor and respect for traditions. Preferably from a similar cultural background, aged 20-24, with a stable career."
   },
   gallery: [
-    "https://img.freepik.com/free-photo/portrait-beautiful-young-woman-standing-grey-wall_231208-10760.jpg",
-    "https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg",
-    "https://img.freepik.com/free-photo/close-up-portrait-young-woman-with-praying-hands_171337-11089.jpg",
-    "https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg",
-    "https://img.freepik.com/free-photo/positive-human-reactions-emotions-charming-young-female-with-fair-hair-broad-smile_176420-15184.jpg"
+    profileImage6,
+    profileImage2,
+    profileImage5,
+    profileImage4,
+    profileImage7,
+    profileImage3,
   ],
   contact: {
     email: "deepakdasashutosh825318@gmail.com",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, User, Heart } from 'lucide-react';
+import { Users, User, Heart, UserPlus } from 'lucide-react';
 import { biodata } from '../data/biodata';
 
 const FamilyDetails: React.FC = () => {
@@ -74,10 +74,44 @@ const FamilyDetails: React.FC = () => {
               <h3 className="text-2xl font-bold text-text">Siblings</h3>
             </div>
 
-            <div className="space-y-4">
-              <p className="text-gray-600 text-lg leading-relaxed">
-                {biodata.family.siblings}
-              </p>
+            <div className="space-y-6">
+              {/* Sisters */}
+              {biodata.family.siblings.sisters && biodata.family.siblings.sisters.length > 0 && (
+                <div>
+                  <div className="flex items-center mb-3">
+                    <div className="bg-pink-100 p-3 rounded-lg mr-3">
+                      <User className="w-6 h-6 text-pink-500" />
+                    </div>
+                    <h4 className="font-semibold text-text text-lg">Sister(s)</h4>
+                  </div>
+                  <ul className="list-disc ml-10 text-gray-700">
+                    {biodata.family.siblings.sisters.map((s, i) => (
+                      <li key={i} className="text-base">
+                        {s.name} — <span className="text-sm text-gray-500">{s.occupation}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Brothers */}
+              {biodata.family.siblings.brothers && biodata.family.siblings.brothers.length > 0 && (
+                <div>
+                  <div className="flex items-center mb-3">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-3">
+                      <UserPlus className="w-6 h-6 text-blue-500" />
+                    </div>
+                    <h4 className="font-semibold text-text text-lg">Brother(s)</h4>
+                  </div>
+                  <ul className="list-disc ml-10 text-gray-700">
+                    {biodata.family.siblings.brothers.map((b, i) => (
+                      <li key={i} className="text-base">
+                        {b.name} — <span className="text-sm text-gray-500">{b.occupation}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
@@ -129,3 +163,4 @@ const FamilyDetails: React.FC = () => {
 };
 
 export default FamilyDetails;
+
