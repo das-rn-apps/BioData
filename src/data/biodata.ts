@@ -86,7 +86,7 @@ export const biodata: Biodata = {
     background: "We are a close-knit, educated family with traditional values and modern outlook. Our family believes in mutual respect, love, and supporting each other's dreams. We celebrate all festivals together and maintain strong family bonds."
   },
   personalInfo: {
-    hobbies: ["Reading novels", "Teaching","Exercise","Playing volleyball", "Cooking Indian cuisine", "Traveling", "Photography", "Listening music"],
+    hobbies: ["Reading & Teaching","Exercise","Playing volleyball","Exploring AI", "Cooking Indian cuisine", "Traveling", "Photography", "Listening music"],
     personality: "I'm an optimistic, caring, and ambitious person who believes in maintaining a perfect work-life balance. I value honesty, integrity, and kindness. I love spending time with family and friends, and I'm passionate about personal growth and helping others.",
     partnerPreferences: "Looking for a well-educated, understanding, and caring life partner who values family and relationships. Someone who is ambitious yet grounded, with a good sense of humor and respect for traditions. Preferably from a similar cultural background, aged 20-24, with a stable career."
   },
