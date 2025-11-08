@@ -17,7 +17,7 @@ const BasicInfo: React.FC = () => {
 
   return (
     <section className="section-padding gradient-bg">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -25,15 +25,15 @@ const BasicInfo: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-text mb-4">
             Basic <span className="text-primary">Details</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xs text-gray-600 max-w-6xl mx-auto">
             Get to know me better through these essential details about my life and background.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {infoItems.map((item, index) => (
             <motion.div
               key={index}
@@ -41,15 +41,15 @@ const BasicInfo: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="glass-effect rounded-xl p-6 card-hover group"
+              className="glass-effect rounded-xl p-1 card-hover group"
             >
               <div className="flex items-start space-x-4">
                 <div className="bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors">
-                  <item.icon className="w-6 h-6 text-primary" />
+                  <item.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">{item.label}</h3>
-                  <p className="text-lg font-semibold text-text">{item.value}</p>
+                  <h3 className="text-xs font-medium text-gray-500 mb-1 italic">{item.label}</h3>
+                  <p className="text-sm font-semibold text-text">{item.value}</p>
                 </div>
               </div>
             </motion.div>
@@ -62,10 +62,10 @@ const BasicInfo: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-12 glass-effect rounded-xl p-8 text-center"
+          className="mt-12 glass-effect rounded-xl text-center"
         >
-          <h3 className="text-2xl font-bold text-text mb-4">Quick Summary</h3>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <h3 className="text-xl font-bold text-text mb-4">Quick Summary</h3>
+          <p className="text-sm text-gray-600 leading-relaxed">
             I'm a {biodata.personal.age}-year-old {biodata.personal.education} graduate working as a {biodata.personal.occupation.toLowerCase()}
             in {biodata.personal.location}. I come from a {biodata.personal.religion.toLowerCase()} {biodata.personal.caste.toLowerCase()} background
             and believe in balancing traditional values with modern thinking.

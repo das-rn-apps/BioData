@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
             </span>
             <Heart className="w-6 h-6 text-accent fill-current" />
           </div>
-          <p className="text-lg text-gray-600 italic">
-            "Marriage is not just about finding the right person, but creating the right relationship. 
+          <p className="text-sm text-gray-600 italic">
+            "Marriage is not just about finding the right person, but creating the right relationship.
             It's not about how much love you have in the beginning, but how much love you build till the end."
           </p>
         </motion.div>
@@ -62,10 +62,10 @@ const Footer: React.FC = () => {
               key={i}
               className="absolute text-pink-300 opacity-40"
               initial={{ y: 0, x: Math.random() * 100 + '%' }}
-              animate={{ 
+              animate={{
                 y: -100,
                 x: Math.random() * 100 + '%',
-                rotate: 360 
+                rotate: 360
               }}
               transition={{
                 duration: 8 + Math.random() * 4,

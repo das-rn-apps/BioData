@@ -1,17 +1,17 @@
 import Header from './components/Header';
 import BasicInfo from './components/BasicInfo';
-import FamilyDetails from './components/FamilyDetails';
 import PersonalInfo from './components/PersonalInfo';
 import Gallery from './components/Gallery';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import FamilyTree from './components/FamilyTree';
 
 function App() {
   return (
     <div className="min-h-screen bg-bg">
       <Header />
       <BasicInfo />
-      <FamilyDetails />
+      <FamilyTree />
       <PersonalInfo />
       <Gallery />
       <ContactSection />

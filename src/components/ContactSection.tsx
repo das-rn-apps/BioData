@@ -29,40 +29,22 @@ const ContactSection: React.FC = () => {
   };
 
   const handleDownloadPDF = () => {
-    const brotherList =
-      biodata.family.siblings.brothers && biodata.family.siblings.brothers.length > 0
-        ? biodata.family.siblings.brothers
-          .map(
-            (b) =>
-              `<li>${b.name}${b.age ? ` (${b.age} yrs)` : ""}${b.occupation ? ` - ${b.occupation}` : ""
-              }${b.status ? `, ${b.status}` : ""}</li>`
-          )
-          .join("")
-        : "<li>No brothers listed</li>";
-
-    const sisterList =
-      biodata.family.siblings.sisters && biodata.family.siblings.sisters.length > 0
-        ? biodata.family.siblings.sisters
-          .map(
-            (s) =>
-              `<li>${s.name}${s.age ? ` (${s.age} yrs)` : ""}${s.occupation ? ` - ${s.occupation}` : ""
-              }${s.status ? `, ${s.status}` : ""}</li>`
-          )
-          .join("")
-        : "<li>No sisters listed</li>";
-
-    const hobbyList = biodata.personalInfo.hobbies.map(h => `<li>${h}</li>`).join("");
+    const family = biodata.family;
+    const personal = biodata.personal;
+    const personalInfo = biodata.personalInfo;
+    const contact = biodata.contact;
 
     const printContent = `
   <html>
     <head>
-      <title>${biodata.personal.name} - Marriage Biodata</title>
+      <title>${personal.name} - Marriage Biodata</title>
       <style>
         body {
           font-family: 'Poppins', sans-serif;
           color: #333;
           margin: 40px;
           line-height: 1.6;
+          background: #faf9ff;
         }
         .header {
           text-align: center;
@@ -110,55 +92,60 @@ const ContactSection: React.FC = () => {
     </head>
     <body>
       <div class="header">
-        <img src="${biodata.personal.profileImage}" alt="Profile" class="profile-img" />
-        <h1>${biodata.personal.name}</h1>
-        <p>${biodata.personal.tagline}</p>
+        <img src="${personal.profileImage}" alt="Profile" class="profile-img" />
+        <h1>${personal.name}</h1>
+        <p>${personal.tagline}</p>
       </div>
 
       <div class="section">
         <h2>Personal Details</h2>
-        <div class="info-item"><span class="label">Date of Birth:</span> ${biodata.personal.dateOfBirth}</div>
-        <div class="info-item"><span class="label">Age:</span> ${biodata.personal.age} years</div>
-        <div class="info-item"><span class="label">Height:</span> ${biodata.personal.height}</div>
-        <div class="info-item"><span class="label">Religion:</span> ${biodata.personal.religion}</div>
-        <div class="info-item"><span class="label">Caste:</span> ${biodata.personal.caste}</div>
-        <div class="info-item"><span class="label">Education:</span> ${biodata.personal.education}</div>
-        <div class="info-item"><span class="label">Occupation:</span> ${biodata.personal.occupation} at ${biodata.personal.company}</div>
-        <div class="info-item"><span class="label">Address:</span> ${biodata.personal.address}</div>
-        <div class="info-item"><span class="label">Current Location:</span> ${biodata.personal.location}</div>
+        <div class="info-item"><span class="label">Date of Birth:</span> ${personal.dateOfBirth}</div>
+        <div class="info-item"><span class="label">Age:</span> ${personal.age} years</div>
+        <div class="info-item"><span class="label">Height:</span> ${personal.height}</div>
+        <div class="info-item"><span class="label">Religion:</span> ${personal.religion}</div>
+        <div class="info-item"><span class="label">Caste:</span> ${personal.caste}</div>
+        <div class="info-item"><span class="label">Education:</span> ${personal.education}</div>
+        <div class="info-item"><span class="label">Occupation:</span> ${personal.occupation} at ${personal.company}</div>
+        <div class="info-item"><span class="label">Address:</span> ${personal.address}</div>
+        <div class="info-item"><span class="label">Current Location:</span> ${personal.location}</div>
       </div>
 
       <div class="section">
         <h2>Family Details</h2>
-        <div class="info-item"><span class="label">Father:</span> ${biodata.family.father.name} - ${biodata.family.father.occupation}</div>
-        <div class="info-item"><span class="label">Mother:</span> ${biodata.family.mother.name} - ${biodata.family.mother.occupation}</div>
+        <div class="info-item"><span class="label">Grandfather:</span> ${family.grandfather.name} - ${family.grandfather.occupation}</div>
+        <div class="info-item"><span class="label">Grandmother:</span> ${family.grandmother.name} - ${family.grandmother.occupation}</div>
+        <div class="info-item"><span class="label">Father:</span> ${family.father.name} - ${family.father.occupation}</div>
+        <div class="info-item"><span class="label">Mother:</span> ${family.mother.name} - ${family.mother.occupation}</div>
+
         <div class="info-item"><span class="label">Siblings:</span></div>
-        <ul><strong>Brothers:</strong>${brotherList}</ul>
-        <ul><strong>Sisters:</strong>${sisterList}</ul>
-        <div class="info-item"><span class="label">Family Background:</span> ${biodata.family.background}</div>
+        <ul>
+          <li>${family.brother.name} - ${family.brother.occupation}</li>
+          <li>${family.sister1.name} - ${family.sister1.occupation}</li>
+          <li>${family.sister2.name} - ${family.sister2.occupation}</li>
+        </ul>
       </div>
 
       <div class="section">
         <h2>Personal Interests</h2>
         <div class="info-item"><span class="label">Hobbies:</span></div>
-        <ul>${hobbyList}</ul>
-        <div class="info-item"><span class="label">Personality:</span> ${biodata.personalInfo.personality}</div>
+        <ul>${personalInfo.hobbies.map(h => `<li>${h}</li>`).join('')}</ul>
+        <div class="info-item"><span class="label">Personality:</span> ${personalInfo.personality}</div>
       </div>
 
       <div class="section">
         <h2>Partner Preferences</h2>
-        <p>${biodata.personalInfo.partnerPreferences}</p>
+        <p>${personalInfo.partnerPreferences}</p>
       </div>
 
       <div class="section">
         <h2>Contact Information</h2>
-        <div class="info-item"><span class="label">Email:</span> ${biodata.contact.email}</div>
-        <div class="info-item"><span class="label">Phone:</span> ${biodata.contact.phone}</div>
-        <div class="info-item"><span class="label">WhatsApp:</span> ${biodata.contact.whatsapp}</div>
+        <div class="info-item"><span class="label">Email:</span> ${contact.email}</div>
+        <div class="info-item"><span class="label">Phone:</span> ${contact.phone}</div>
+        <div class="info-item"><span class="label">WhatsApp:</span> ${contact.whatsapp}</div>
       </div>
 
       <div class="footer">
-        <p>Generated biodata of ${biodata.personal.name}</p>
+        <p>Generated biodata of ${personal.name}</p>
         <p>Thank you for viewing ❤️</p>
       </div>
     </body>
@@ -184,12 +171,12 @@ const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-text mb-3">
             Get In <span className="text-primary">Touch</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto">
             Interested in knowing more? Feel free to reach out or share my profile.
           </p>
         </motion.div>
@@ -246,46 +233,43 @@ const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="glass-effect rounded-xl p-8"
+          className="glass-effect rounded-xl"
         >
-          <h3 className="text-2xl font-bold text-text mb-6 text-center">Contact Information</h3>
+          <h3 className="text-2xl font-bold text-text mb-3 p-4 text-center">Contact Information</h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             <motion.a
               href={`mailto:${biodata.contact.email}`}
-              className="flex flex-col items-center p-4 rounded-lg bg-white/50 hover:bg-white/70 transition-colors group"
-              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center  transition-all group w-24 sm:w-32"
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Mail className="w-8 h-8 text-primary mb-3 group-hover:animate-pulse" />
-              <span className="font-semibold text-text">Email</span>
-              <span className="text-sm text-gray-600 text-center">{biodata.contact.email}</span>
+              <Mail className="w-8 h-8 text-primary mb-2 group-hover:animate-pulse" />
+              <span className="text-sm text-gray-700 font-medium">Email</span>
             </motion.a>
 
             <motion.a
               href={`tel:${biodata.contact.phone}`}
-              className="flex flex-col items-center p-4 rounded-lg bg-white/50 hover:bg-white/70 transition-colors group"
-              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center  transition-all group w-24 sm:w-32"
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Phone className="w-8 h-8 text-accent mb-3 group-hover:animate-pulse" />
-              <span className="font-semibold text-text">Phone</span>
-              <span className="text-sm text-gray-600 text-center">{biodata.contact.phone}</span>
+              <Phone className="w-8 h-8 text-accent mb-2 group-hover:animate-pulse" />
+              <span className="text-sm text-gray-700 font-medium">Call</span>
             </motion.a>
-
             <motion.a
               href={`https://wa.me/${biodata.contact.whatsapp.replace(/\D/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center p-4 rounded-lg bg-white/50 hover:bg-white/70 transition-colors group"
-              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center  transition-all group w-24 sm:w-32"
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <MessageCircle className="w-8 h-8 text-green-600 mb-3 group-hover:animate-pulse" />
-              <span className="font-semibold text-text">WhatsApp</span>
-              <span className="text-sm text-gray-600 text-center">{biodata.contact.whatsapp}</span>
+              <MessageCircle className="w-8 h-8 text-green-600 mb-2 group-hover:animate-pulse" />
+              <span className="text-sm text-gray-700 font-medium">WhatsApp</span>
             </motion.a>
           </div>
+
         </motion.div>
 
         {/* Contact Note */}
@@ -296,9 +280,8 @@ const ContactSection: React.FC = () => {
           viewport={{ once: true }}
           className="mt-6 text-center"
         >
-          <p className="text-gray-600">
-            <span className="font-semibold">Note:</span> Please contact only if you are genuinely interested
-            and looking for a serious relationship. Family involvement is welcome and appreciated.
+          <p className="text-gray-600 text-sm">
+            <span className="font-semibold">Note:</span> Please contact only if you are genuinely interested and looking for a serious relationship. Family involvement is welcome and appreciated.
           </p>
         </motion.div>
       </div>

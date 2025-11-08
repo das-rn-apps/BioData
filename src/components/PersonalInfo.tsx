@@ -14,15 +14,15 @@ const PersonalInfo: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-text mb-3">
             Personal <span className="text-primary">Information</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto">
             Learn more about my interests, personality, and what I look for in a life partner.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Hobbies & Interests */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -44,7 +44,7 @@ const PersonalInfo: React.FC = () => {
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-r from-primary/10 to-accent/10 text-primary px-4 py-2 rounded-full text-sm font-medium card-hover"
+                  className="bg-gradient-to-r from-primary/10 to-accent/10 text-primary px-4 py-2 rounded-full text-xs font-medium card-hover"
                 >
                   {hobby}
                 </motion.span>
@@ -73,7 +73,7 @@ const PersonalInfo: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="glass-effect rounded-xl p-8 card-hover"
+            className="glass-effect rounded-xl p-4 card-hover"
           >
             <div className="flex items-center mb-6">
               <Sparkles className="w-8 h-8 text-primary mr-3" />
@@ -81,7 +81,7 @@ const PersonalInfo: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-sm">
                 {biodata.personalInfo.personality}
               </p>
 
@@ -107,10 +107,10 @@ const PersonalInfo: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-8 glass-effect rounded-xl p-8 card-hover"
+          className="mt-2 glass-effect rounded-xl p-3 card-hover"
         >
           <div className="text-center mb-6">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-3">
               <Target className="w-8 h-8 text-accent mr-3" />
               <h3 className="text-2xl font-bold text-text">Partner Preferences</h3>
             </div>
@@ -162,7 +162,7 @@ const PersonalInfo: React.FC = () => {
           </div>
 
           <div className="mt-6 p-4 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg">
-            <p className="text-gray-600 leading-relaxed text-center">
+            <p className="text-gray-600 leading-relaxed text-sm">
               {biodata.personalInfo.partnerPreferences}
             </p>
           </div>

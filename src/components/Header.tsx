@@ -61,7 +61,7 @@ const Header: React.FC = () => {
 
         {/* Tagline */}
         <motion.p
-          className="text-xl md:text-2xl text-gray-600 mb-12 font-medium"
+          className="text-xl md:text-2xl text-gray-500 mb-12 font-medium italic"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -90,7 +90,7 @@ const Header: React.FC = () => {
           </div>
           <div className="glass-effect rounded-lg p-4 card-hover">
             <div className="text-primary font-semibold">{biodata.personal.address.split(',')[0]}</div>
-            <div className="text-sm text-gray-600">Address</div>
+            <div className="text-sm text-gray-600">{biodata.personal.address.split(',')[1]}</div>
           </div>
         </motion.div>
 

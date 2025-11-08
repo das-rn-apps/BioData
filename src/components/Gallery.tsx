@@ -34,21 +34,21 @@ const Gallery: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-4"
         >
           <div className="flex items-center justify-center mb-4">
             <Camera className="w-8 h-8 text-primary mr-3" />
-            <h2 className="text-4xl md:text-5xl font-bold text-text">
+            <h2 className="text-3xl md:text-5xl font-bold text-text">
               Photo <span className="text-primary">Gallery</span>
             </h2>
           </div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto">
             A glimpse into my life through these captured moments.
           </p>
         </motion.div>
 
         {/* Photo Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {biodata.gallery.map((image, index) => (
             <motion.div
               key={index}
@@ -75,31 +75,6 @@ const Gallery: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Gallery Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-12 glass-effect rounded-xl p-8 text-center"
-        >
-          <h3 className="text-2xl font-bold text-text mb-4">More About My Photos</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">{biodata.gallery.length}</div>
-              <p className="text-gray-600">Beautiful Moments</p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">100%</div>
-              <p className="text-gray-600">Authentic & Recent</p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">HD</div>
-              <p className="text-gray-600">High Quality</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       {/* Modal */}
@@ -125,7 +100,7 @@ const Gallery: React.FC = () => {
                 alt={`Enlarged gallery image ${selectedImage + 1}`}
                 className="max-w-full max-h-full object-contain rounded-lg"
               />
-              
+
               {/* Close Button */}
               <button
                 onClick={closeModal}
